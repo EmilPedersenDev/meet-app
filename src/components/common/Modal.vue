@@ -39,6 +39,7 @@ export default {
   right: 0;
   bottom: 0;
   background-color: rgba(246, 246, 246, 0.9);
+  color: $dark-blue;
   .modal-card {
     position: relative;
     top: 50%;
@@ -58,7 +59,6 @@ export default {
       width: 100%;
       .fa-times {
         display: block;
-        color: #fff;
         text-align: right;
         opacity: 0.7;
         font-size: rem-calc(24);
@@ -69,13 +69,11 @@ export default {
       .modal-custom-header,
       .modal-custom-body,
       .modal-custom-footer {
-        text-align: center;
-        color: #fff;
         margin-bottom: rem-calc(40);
       }
       .modal-custom-footer {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         margin-bottom: rem-calc(20);
       }
     }

@@ -8,7 +8,12 @@
       </div>
     </div>
     <div class="ninjas-body">
-      <div class="ninja-card" v-for="(ninja, id) in test" :key="id">
+      <div
+        class="ninja-card"
+        v-for="(ninja, id) in test"
+        :key="id"
+        @click="openInfoModal(ninja)"
+      >
         <img :src="ninja.imagePortraitUrl + '-medium'" alt="" />
         <div class="ninja-card-description">
           <h4>{{ ninja.name }}</h4>
@@ -27,17 +32,31 @@
         </div> -->
       </div>
     </div>
+    <transition name="modal-fade">
+      <info-modal
+        v-if="showInfoModal"
+        :ninja="selectedNinja"
+        :close="closeInfoModal"
+      ></info-modal>
+    </transition>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import InfoModal from "../components/InfoModal";
 export default {
   name: "Ninjas",
+
+  components: {
+    InfoModal,
+  },
 
   data() {
     return {
       ninjas: [],
+      selectedNinja: {},
+      showInfoModal: false,
     };
   },
   mounted() {
@@ -48,6 +67,15 @@ export default {
   computed: {
     test() {
       return this.ninjas.filter((ninja, id) => id < 10);
+    },
+  },
+  methods: {
+    openInfoModal(ninja) {
+      this.selectedNinja = ninja;
+      this.showInfoModal = true;
+    },
+    closeInfoModal() {
+      this.showInfoModal = false;
     },
   },
 };
@@ -84,14 +112,6 @@ export default {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
       0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
       0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
-    img {
-      width: 150px;
-      object-fit: cover;
-      height: 150px;
-      border-radius: 50%;
-      margin: 0 auto;
-      box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
-    }
     p,
     h4,
     i {

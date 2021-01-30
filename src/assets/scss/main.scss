@@ -1,5 +1,6 @@
 @import "./colors.scss";
 @import "./font.scss";
+@import "./animations.scss";
 
 @function rem-calc($size) {
   $remSize: $size / 16;
@@ -31,4 +32,12 @@ body {
     width: 80%;
     margin: 0 auto;
   }
+}
+
+img {
+  width: 150px;
+  object-fit: cover;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
 }

@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.d-button {
+.n-button {
   position: relative;
   border-radius: rem-calc(6);
   border: none;
@@ -34,26 +34,6 @@ export default {
   &:hover {
     cursor: pointer;
     transform: translateY(-2px);
-  }
-
-  &.primary {
-    background: #80c565;
-    transition: all 0.15s ease;
-    color: $white;
-    &:hover {
-      cursor: pointer;
-      transform: translateY(-2px);
-    }
-  }
-  &.round {
-    background: transparent;
-    border: rem-calc(1) solid #e14eca;
-    border-radius: 50%;
-    color: $white;
-    &:hover {
-      cursor: pointer;
-      transform: translateY(-2px);
-    }
   }
 }
 </style>
