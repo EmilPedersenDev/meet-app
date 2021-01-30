@@ -1,0 +1,26 @@
+@import "./colors.scss";
+@import "./font.scss";
+
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+#app {
+  font-family: $montserrat, $sans-serif;
+}
+
+body {
+  background-color: $background-main;
+  margin: 0;
+  box-sizing: border-box;
+  color: $dark-blue;
+}
+
+.container {
+  margin: 0 rem-calc(24);
+  @media (min-width: 992px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
