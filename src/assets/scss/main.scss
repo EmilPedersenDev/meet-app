@@ -6,6 +6,15 @@
   @return #{$remSize}rem;
 }
 
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 #app {
   font-family: $montserrat, $sans-serif;
 }
@@ -13,7 +22,6 @@
 body {
   background-color: $background-main;
   margin: 0;
-  box-sizing: border-box;
   color: $dark-blue;
 }
 
