@@ -2,7 +2,6 @@
   <select
     class="n-select"
     :value="value"
-    :tabindex="tabindex"
     @click.stop.prevent
     @input="onInput"
     @change="onChange"

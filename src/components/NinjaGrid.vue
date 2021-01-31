@@ -1,0 +1,59 @@
+<template>
+  <div class="ninja-grid">
+    <div
+      class="ninja-card-wrapper"
+      v-for="(ninja, id) in ninjas"
+      :key="id"
+      @click="onOpenInfoModal(ninja)"
+    >
+      <ninja-card :ninja="ninja" />
+    </div>
+  </div>
+</template>
+
+<script>
+import NinjaCard from "./NinjaCard";
+export default {
+  name: "ninja-grid",
+  components: {
+    NinjaCard,
+  },
+  props: {
+    ninjas: {
+      type: Array,
+    },
+    onClick: {
+      type: Function,
+    },
+  },
+  methods: {
+    onOpenInfoModal(ninja) {
+      if (!this.onClick) return;
+      this.onClick(ninja);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.ninja-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
+  gap: 40px;
+  justify-items: center;
+  .ninja-card-wrapper {
+    background: $white;
+    border-radius: rem-calc(6);
+    text-align: center;
+    padding: rem-calc(10) 0;
+    width: 100%;
+    max-width: rem-calc(230);
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  }
+}
+</style>
