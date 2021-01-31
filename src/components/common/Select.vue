@@ -1,15 +1,8 @@
 <template>
-  <select
-    class="n-select"
-    :value="value"
-    @click.stop.prevent
-    @input="onInput"
-    @change="onChange"
-  >
-    <option v-for="item in items" :key="item.id" :value="item.id">
-      {{ item.name }}
-    </option>
-    <slot></slot>
+  <select class="n-select" @click.stop.prevent @change="onChange">
+    <option value="" selected disabled>Sort by:</option>
+    <option value="name">Name</option>
+    <option value="office">Office</option>
   </select>
 </template>
 
@@ -17,41 +10,9 @@
 export default {
   name: "n-select",
 
-  data: function () {
-    return {
-      localValue: this.value,
-    };
-  },
-
-  props: {
-    value: {
-      default: null,
-    },
-    items: {
-      type: Array,
-    },
-  },
-
-  watch: {
-    value: function (newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.localValue = newVal;
-      }
-    },
-    localValue: function (newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit("input", newVal);
-      }
-    },
-  },
-
   methods: {
-    onInput: function (evt) {
-      this.localValue = evt.target.value;
-    },
     onChange: function (evt) {
-      this.localValue = evt.target.value;
-      this.$emit("change", this.localValue);
+      this.$emit("change", evt.target.value);
     },
   },
 };
