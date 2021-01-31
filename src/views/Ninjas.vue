@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="isLoaded">
     <div class="ninjas-header">
       <h1>Meet our Ninjas</h1>
       <div class="search-filter-wrapper">
@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="ninjas-body">
-      <ninja-grid :onClick="openInfoModal" :ninjas="test" />
+      <ninja-grid :onClick="openInfoModal" :ninjas="ninjasToRender" />
     </div>
     <transition name="modal-fade">
       <info-modal
@@ -17,6 +17,7 @@
         :close="closeInfoModal"
       />
     </transition>
+    <n-observer v-on:intersect="renderNinjas" />
   </div>
 </template>
 
@@ -34,20 +35,21 @@ export default {
 
   data() {
     return {
-      ninjas: [],
+      allNinjas: [],
+      ninjasToRender: [],
       selectedNinja: {},
       showInfoModal: false,
+      limit: 10,
+      offset: 0,
+      isLoaded: false,
     };
   },
-  mounted() {
+  created() {
+    this.isLoaded = false;
     axios.get("https://api.tretton37.com/ninjas").then((result) => {
-      this.ninjas = result.data;
+      this.allNinjas = result.data;
+      this.isLoaded = true;
     });
-  },
-  computed: {
-    test() {
-      return this.ninjas.filter((ninja, id) => id < 10);
-    },
   },
   methods: {
     openInfoModal(ninja) {
@@ -56,6 +58,14 @@ export default {
     },
     closeInfoModal() {
       this.showInfoModal = false;
+    },
+    renderNinjas() {
+      this.ninjasToRender = [
+        ...this.ninjasToRender,
+        ...this.allNinjas.slice(this.offset, this.limit),
+      ];
+      this.offset = this.offset + 10;
+      this.limit = this.limit + 10;
     },
   },
 };
