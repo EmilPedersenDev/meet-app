@@ -126,18 +126,10 @@ export default {
       p {
         font-size: rem-calc(14);
         letter-spacing: rem-calc(2);
+        color: $green;
+        font-weight: 500;
       }
     }
-    // .socials {
-    //   position: absolute;
-    //   bottom: 3%;
-    //   right: 5%;
-    //   i {
-    //     margin-right: rem-calc(5);
-    //     margin-top: rem-calc(2);
-    //     font-size: rem-calc(20);
-    //   }
-    // }
   }
 }
 </style>

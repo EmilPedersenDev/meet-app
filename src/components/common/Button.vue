@@ -21,9 +21,11 @@ export default {
   position: relative;
   border-radius: rem-calc(6);
   border: none;
-  padding: rem-calc(5) rem-calc(10);
+  padding: rem-calc(10) rem-calc(10);
   outline: none;
   transition: all 0.15s ease;
+  background: $green;
+  min-width: 100px;
 
   &.transition {
     &:hover {
