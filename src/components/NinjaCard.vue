@@ -22,6 +22,17 @@ export default {
 <style lang="scss" scoped>
 .ninja-card {
   width: 100%;
+  height: 100%;
+  background: $white;
+  border-radius: rem-calc(6);
+  text-align: center;
+  padding: rem-calc(10) 0;
+  position: relative;
+  box-shadow: $box-shadow-card;
+  transition: $fade-animation;
+  img {
+    transition: $fade-animation;
+  }
   p,
   h4,
   i {
@@ -39,6 +50,12 @@ export default {
       color: $green;
       font-weight: 500;
     }
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: $box-shadow-hover;
   }
 }
 </style>
