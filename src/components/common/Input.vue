@@ -79,6 +79,7 @@ export default {
     font-size: rem-calc(14);
     font-weight: normal;
     padding: rem-calc(10) rem-calc(10) rem-calc(10) rem-calc(40);
+    height: rem-calc(45);
     color: $dark-blue;
     transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
       background-color 0.3s ease-in-out;

@@ -9,7 +9,6 @@ export default {
   name: "n-button",
   methods: {
     onClick(e) {
-      if (this.type === "submit" || this.type === "reset") return;
       this.$emit("click", e);
     },
   },
@@ -19,23 +18,47 @@ export default {
 <style lang="scss" scoped>
 .n-button {
   position: relative;
-  border-radius: rem-calc(6);
+  display: inline-block;
+  overflow: hidden;
   border: none;
-  padding: rem-calc(10) rem-calc(10);
+  border-radius: rem-calc(6);
+  padding: rem-calc(12) rem-calc(10);
   outline: none;
-  transition: all 0.15s ease;
-  background: $green;
+  font-weight: 600;
+  color: $dark-blue;
+  transition: $fade-animation;
   min-width: 100px;
-
-  &.transition {
-    &:hover {
-      transform: translateY(-2px);
-    }
+  z-index: 1;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: rem-calc(6);
+    background-color: $green;
+    z-index: -2;
+  }
+  &:before {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: $dark-blue;
+    border-radius: rem-calc(6);
+    z-index: -1;
+    transition: $fade-animation;
   }
 
   &:hover {
     cursor: pointer;
-    transform: translateY(-2px);
+    color: $white;
+    &:before {
+      width: 100%;
+    }
   }
 }
 </style>
