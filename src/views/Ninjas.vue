@@ -54,15 +54,22 @@ export default {
   },
   created() {
     this.isLoaded = false;
-    axios.get("https://api.tretton37.com/ninjas").then((result) => {
-      this.allNinjas = result.data;
-      this.isLoaded = true;
-      this.filteredNinjas = [...this.allNinjas];
-      this.ninjasToRender = [...this.allNinjas.slice(this.offset, this.limit)];
-      this.offset = 20;
-      this.limit = 40;
-      document.addEventListener("scroll", this.handleScroll);
-    });
+    axios
+      .get("https://api.tretton37.com/ninjas")
+      .then((result) => {
+        this.allNinjas = result.data.filter((ninja) => ninja.office);
+        this.isLoaded = true;
+        this.filteredNinjas = [...this.allNinjas];
+        this.ninjasToRender = [
+          ...this.allNinjas.slice(this.offset, this.limit),
+        ];
+        this.offset = 20;
+        this.limit = 40;
+        document.addEventListener("scroll", this.handleScroll);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   },
   destroyed() {
     document.removeEventListener("scroll", this.handleScroll);
