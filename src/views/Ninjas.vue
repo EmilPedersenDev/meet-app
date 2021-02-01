@@ -131,7 +131,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: rem-calc(60);
+    margin-bottom: rem-calc(30);
     @media (min-width: 576px) {
       flex-wrap: nowrap;
     }
