@@ -38,18 +38,17 @@ export default {
 <style lang="scss" scoped>
 .ninja-grid {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  grid-auto-rows: minmax(300px, auto);
-  gap: 40px;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   .ninja-card-wrapper {
     background: $white;
     border-radius: rem-calc(6);
     text-align: center;
     padding: rem-calc(10) 0;
-    width: 100%;
-    max-width: rem-calc(230);
+    width: rem-calc(230);
+    height: rem-calc(300);
+    margin: rem-calc(20);
     position: relative;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
       0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),

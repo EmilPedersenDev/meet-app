@@ -23,7 +23,6 @@
         :close="closeInfoModal"
       />
     </transition>
-    <n-observer v-on:intersect="renderNinjas" />
   </div>
 </template>
 
@@ -50,6 +49,7 @@ export default {
       offset: 0,
       isLoaded: false,
       searchQuery: "",
+      scrollDistance: 350,
     };
   },
   created() {
@@ -58,7 +58,14 @@ export default {
       this.allNinjas = result.data;
       this.isLoaded = true;
       this.filteredNinjas = [...this.allNinjas];
+      this.ninjasToRender = [...this.allNinjas.slice(this.offset, this.limit)];
+      this.offset = 20;
+      this.limit = 40;
+      document.addEventListener("scroll", this.handleScroll);
     });
+  },
+  destroyed() {
+    document.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     openInfoModal(ninja) {
@@ -91,6 +98,14 @@ export default {
       this.ninjasToRender.sort((a, b) =>
         a[sortValue] > b[sortValue] ? 1 : b[sortValue] > a[sortValue] ? -1 : 0
       );
+    },
+    handleScroll() {
+      if (
+        window.pageYOffset + window.innerHeight >
+        document.body.scrollHeight - this.scrollDistance
+      ) {
+        this.renderNinjas();
+      }
     },
     renderNinjas() {
       if (this.offset > this.ninjasToRender.length) return;
