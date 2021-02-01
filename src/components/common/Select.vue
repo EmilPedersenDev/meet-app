@@ -28,7 +28,7 @@ export default {
   color: $dark-blue;
   width: 100%;
   max-width: rem-calc(100);
-  margin: 20px 0 0 0;
+  margin: rem-calc(20) 0 0 0;
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
     background-color 0.3s ease-in-out;
   background: transparent;

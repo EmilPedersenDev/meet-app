@@ -46,9 +46,8 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     background: $background-main;
-    box-shadow: 0 rem-calc(15) rem-calc(35) rgba(246, 246, 246, 0.2),
-      0 rem-calc(5) rem-calc(15) rgba(246, 246, 246, 0.17);
-    border-radius: 0.2857rem;
+    box-shadow: $box-shadow-card;
+    border-radius: rem-calc(6);
     max-width: rem-calc(768);
     padding: rem-calc(24);
     max-height: calc(100% - 20px);
