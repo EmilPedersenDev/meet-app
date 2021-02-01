@@ -2,7 +2,11 @@
   <n-modal :onClose="closeModal">
     <div slot="modal-header" class="modal-custom-header">
       <div class="img-wrapper">
-        <img :src="ninja.imagePortraitUrl + '-medium'" alt="" />
+        <img
+          :src="ninja.imagePortraitUrl"
+          alt="profile image Ninja"
+          @error="deafultImg"
+        />
       </div>
       <div class="name-and-social">
         <h1>{{ ninja.name }}</h1>
@@ -56,6 +60,9 @@ export default {
     closeModal() {
       if (!this.close) return;
       this.close();
+    },
+    deafultImg(e) {
+      e.target.src = "/avatar.svg";
     },
   },
 };

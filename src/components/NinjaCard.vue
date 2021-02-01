@@ -1,6 +1,10 @@
 <template>
   <div class="ninja-card">
-    <img :src="ninja.imagePortraitUrl + '-medium'" alt="" />
+    <img
+      :src="ninja.imagePortraitUrl"
+      alt="profile image Ninja"
+      @error="deafultImg"
+    />
     <div class="ninja-card-description">
       <h4>{{ ninja.name }}</h4>
       <p>{{ ninja.office }}</p>
@@ -14,6 +18,11 @@ export default {
   props: {
     ninja: {
       type: Object,
+    },
+  },
+  methods: {
+    deafultImg(e) {
+      e.target.src = "/avatar.svg";
     },
   },
 };
