@@ -44,6 +44,7 @@ export default {
       ninjasToRender: [],
       filteredNinjas: [],
       selectedNinja: {},
+      ninjasFilterKeys: ["name", "office", "twitter", "gitHub", "linkedIn"],
       showInfoModal: false,
       limit: 20,
       offset: 0,
@@ -85,7 +86,7 @@ export default {
     searchNinja() {
       this.filteredNinjas = this.allNinjas.filter((ninja) => {
         for (let key in ninja) {
-          if (!ninja[key]) continue;
+          if (!ninja[key] || !this.ninjasFilterKeys.includes(key)) continue;
           if (
             ninja[key]
               .toString()
