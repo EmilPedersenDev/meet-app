@@ -2,10 +2,9 @@
   <div class="input-group">
     <input
       :type="type"
-      :name="name"
       :placeholder="placeholder"
       :id="id"
-      @input="onInput"
+      @input="onInput($event.target.value)"
       autocomplete="off"
       :value="value"
     />
@@ -32,26 +31,10 @@ export default {
       type: String,
       default: "input",
     },
-    name: {
-      type: String,
-      default: "",
-    },
-  },
-  data() {
-    return {
-      localValue: this.value,
-    };
-  },
-  watch: {
-    localValue(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit("input", newVal);
-      }
-    },
   },
   methods: {
-    onInput(evt) {
-      this.localValue = evt.target.value;
+    onInput(value) {
+      this.$emit("input", value);
     },
   },
 };
