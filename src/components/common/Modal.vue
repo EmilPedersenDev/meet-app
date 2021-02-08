@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     onExitClose() {
-      if (this.isLoading) return;
       if (this.onClose) {
         this.onClose();
       }

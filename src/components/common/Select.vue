@@ -1,5 +1,5 @@
 <template>
-  <select class="n-select" @click.stop.prevent @change="onChange">
+  <select class="n-select" @change="onChange">
     <option value="" selected disabled>Sort by:</option>
     <option value="name">Name</option>
     <option value="office">Office</option>

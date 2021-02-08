@@ -28,9 +28,6 @@ export default {
       type: String,
       default: "",
     },
-    input: {
-      type: Function,
-    },
     type: {
       type: String,
       default: "input",
@@ -55,7 +52,6 @@ export default {
   methods: {
     onInput(evt) {
       this.localValue = evt.target.value;
-      if (this.input) this.input();
     },
   },
 };
